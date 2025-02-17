@@ -42,8 +42,8 @@ public class BankAccount {
     }
 
     if (value > this.balance) {
-      // Não deveria ser assim, não pode ter print a classe
-      System.out.println("O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
+      // Não deveria ser assim, não pode ter print a classe (comentário do professor)
+      throw new InsufficientFundsException("O valor R$ " + value + " é superior ao saldo [R$ " + this.balance + "]");
     }
 
     this.balance -= value;

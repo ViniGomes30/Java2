@@ -1,9 +1,9 @@
 package br.dev.joaquim;
 
+import br.dev.joaquim.bank.BankAccount;
+import br.dev.joaquim.bank.InsufficientFundsException;
 import java.util.Random;
 import java.util.Scanner;
-
-import br.dev.joaquim.bank.BankAccount;
 
 public class UserInterface {
     private Scanner input = new Scanner(System.in);
