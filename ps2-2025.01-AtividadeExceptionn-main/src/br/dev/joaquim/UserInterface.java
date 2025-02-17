@@ -5,10 +5,17 @@ import br.dev.joaquim.bank.InsufficientFundsException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Classe que representa a interface do usuário para o sistema bancário.
+ * @author Vinicius Gutierrez Gomes.
+ */
 public class UserInterface {
     private Scanner input = new Scanner(System.in);
     private BankAccount account;
 
+    /**
+     * Exibe uma mensagem de boas-vindas e cria uma nova conta bancária.
+     */
     private void welcome() {
         System.out.println("Bem-vindo ao sistema bancário");
         System.out.print("Vamos criar usa conta, informe seu nome: ");
@@ -18,6 +25,9 @@ public class UserInterface {
         this.account = new BankAccount(accountNumber, 0, holderName);
     }
 
+    /**
+     * Exibe o menu de opções para o usuário.
+     */
     private void showMenu() {
         System.out.println("\n\n-----------------------");
         System.out.println("Escolha uma das opções:");
@@ -28,6 +38,9 @@ public class UserInterface {
         System.out.print("opção > ");
     }
 
+    /**
+     * Inicia a interface do usuário.
+     */
     public void start() {
         welcome();
         if (account == null)
@@ -61,6 +74,9 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Realiza um depósito na conta bancária.
+     */
     private void deposit() {
         System.out.print("\nInforme o valor a ser depositado: ");
         double value = readValue();
@@ -68,23 +84,45 @@ public class UserInterface {
         System.out.println("Desposito realizado com sucesso.");
     }
 
+    /**
+     * Realiza um saque na conta bancária.
+     */
     private void withdraw() {
         System.out.print("\nInforme o valor a ser sacado: ");
         double value = readValue();
-        account.withdraw(value); // pode dar problema
-        System.out.println("Saque realizado com sucesso");
+        try {
+            account.withdraw(value); // pode dar problema
+            System.out.println("Saque realizado com sucesso");
+        } catch (InsufficientFundsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
+    /**
+     * Lê a opção escolhida pelo usuário.
+     * 
+     * @return a opção escolhida
+     * @throws NumberFormatException se a entrada não for um número válido
+     */
     private int readOption() {
         String choiceString = input.nextLine();
         return Integer.parseInt(choiceString);
     }
 
+    /**
+     * Lê um valor informado pelo usuário.
+     * 
+     * @return o valor informado
+     * @throws NumberFormatException se a entrada não for um número válido
+     */
     private double readValue() {
         String line = input.nextLine();
         return Double.parseDouble(line);
     }
 
+    /**
+     * Aguarda o usuário pressionar ENTER para continuar.
+     */
     private void waitUser() {
         System.out.println("pressione ENTER para continuar...");
         input.nextLine();
