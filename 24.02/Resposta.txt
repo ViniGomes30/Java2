@@ -1,0 +1,5 @@
+
+ Nome: Vinicius Gutierrez Gomes
+ RA: 10425609
+
+As classes abstratas são usadas para promover o reuso de código, garantir a implementação de comportamentos comuns e facilitar a extensão do sistema. Se a classe abstrata fosse concreta, perderíamos essas vantagens e teríamos um código menos flexível e mais difícil de manter.
